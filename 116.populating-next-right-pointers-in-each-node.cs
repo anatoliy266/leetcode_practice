@@ -79,7 +79,6 @@ public class Solution {
         Dfs(node.left);
         Dfs(node.right);
     }
-    
 }
 // @lc code=end
 
