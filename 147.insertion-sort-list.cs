@@ -24,6 +24,7 @@ public class Solution
 {
     public ListNode InsertionSortList(ListNode head)
     {
+        if (head == null) return null;
         var dummy = new ListNode(int.MinValue, head);
 
         
