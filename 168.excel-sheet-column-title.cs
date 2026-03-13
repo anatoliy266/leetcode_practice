@@ -25,7 +25,7 @@ public class Solution
         }
         //res.Add(mask[columnNumber]);
         res.Reverse();
-        return string.Join("", res);
+        return new string(res.ToArray());
 
         // var quot = columnNumber / 26; //80000000
         // if (quot != 0) sb.Append(mask[quot]);
