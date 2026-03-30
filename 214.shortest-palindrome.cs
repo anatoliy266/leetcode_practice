@@ -40,6 +40,9 @@ public class Solution {
         //     mid--;
         // }
         // return palindromes.OrderBy(p => p.Length).First();
+
+
+        
         var rev = new string(s.Reverse().ToArray());
         var ss = s + "#" + rev;
         var cnt = 0;
