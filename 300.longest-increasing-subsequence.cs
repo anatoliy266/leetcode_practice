@@ -53,7 +53,6 @@ public class Solution
             }
         }
         return list.Count();
-
     }
 
     // public void Dfs(int[] nums, int idx, int cnt)
