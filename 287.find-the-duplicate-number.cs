@@ -42,21 +42,19 @@ public class Solution {
         // return res;
 
         // var (slow,fast) = (nums[0],nums[0]);
-        int slow = nums[0];
-        int fast = nums[0];
-        do
-        {
-            slow = nums[slow]; 
-            fast = nums[nums[fast]];
-        } while (slow != fast);
-        slow = nums[0];
-        while (slow != fast)
-        {
-            slow = nums[slow];
-            fast = nums[fast];
-        }
+        // do
+        // {
+        //     slow = nums[slow]; 
+        //     fast = nums[nums[fast]];
+        // } while (slow != fast);
+        // slow = nums[0];
+        // while (slow != fast)
+        // {
+        //     slow = nums[slow];
+        //     fast = nums[fast];
+        // }
 
-        return slow;
+        // return slow;
     }
 }
 // @lc code=end

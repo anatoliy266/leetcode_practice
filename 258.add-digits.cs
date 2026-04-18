@@ -19,7 +19,7 @@ public class Solution {
         // }
         // return num;
 
-         if (num == 0) return 0;
+        if (num == 0) return 0;
         return 1 + (num - 1) % 9;
     }
 }

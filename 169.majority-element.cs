@@ -21,7 +21,7 @@ public class Solution {
         //     }
         //     if (cnt > nums.Length / 2) res |= mask;
         // }
-        // return res;
+        // return res; 
 
         var cnt = 0;
         var candidate  =0;

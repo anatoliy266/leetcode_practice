@@ -18,9 +18,7 @@ public class Solution {
         {
             d ^= nums[i];
         }
-
         return d;
-
     }
 }
 // @lc code=end
