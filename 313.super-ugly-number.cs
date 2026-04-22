@@ -35,10 +35,8 @@ public class Solution
 
         var dp = new int[n];
         dp[0] = 1;
-        //var (i2, i3, i5) = (0, 0, 0);
         var idxs = new int[primes.Length];
         var nexts = new int[primes.Length];
-        // var (next2, next3, next5) = (2, 3, 5);
         Array.Copy(primes, nexts, primes.Length);
         for (var i = 1; i < n; i++)
         {
