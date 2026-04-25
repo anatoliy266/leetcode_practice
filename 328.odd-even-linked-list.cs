@@ -16,24 +16,37 @@
  *     }
  * }
  */
-public class Solution {
-    public ListNode OddEvenList(ListNode head) {
-        if (head?.next == null) return head;
-        var d1 = head;
-        var d2 = head.next;
-        var d2Head = d2;
+public class Solution
+{
+    public ListNode OddEvenList(ListNode head)
+    {
+        if (head == null) return null;
 
-        while (d2 is not null && d2.next is not null)
+        var d1 = new ListNode(0, head);
+        var d2 = new ListNode(0, head.next);
+        var d2Head = d2.next;
+
+        var curr = head;
+        var cnt = 0;
+        while (curr is not null)
         {
-            d1.next = d2.next;
-            d1 = d1.next;
-
-            d2.next = d1.next;
-            d2 = d2.next;
+            if (cnt % 2 == 0)
+            {
+                d1.next = curr;
+                d1 = d1.next;
+            }
+            else
+            {
+                d2.next = curr;
+                d2 = d2.next;
+            }
+            curr = curr.next;
+            cnt++; // ✅ инкрементируем
         }
 
         d1.next = d2Head;
-        
+        d2.next = null;
+
         return head;
     }
 }
