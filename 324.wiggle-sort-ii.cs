@@ -39,7 +39,6 @@ public class Solution {
             nums[i] = val;
             buckets[val]--;
         }
-
     }
 }
 // @lc code=end

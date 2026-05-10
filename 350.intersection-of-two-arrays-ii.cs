@@ -10,8 +10,7 @@ public class Solution {
         var dict = new Dictionary<int, int>();
         for (var i = 0; i < nums1.Length; i++)
         {
-            if (dict.ContainsKey(nums1[i])) dict[nums1[i]]++;
-            else dict[nums1[i]] = 1;
+            counts[n] = counts.GetValueOrDefault(n) + 1;
         }
         var res = new List<int>();
         for (var i = 0; i < nums2.Length; i++)

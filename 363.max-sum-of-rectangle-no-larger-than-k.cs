@@ -38,7 +38,7 @@ public class Solution
                 {
                     var current = prefsums[c];
                     var target = current - k;
-
+                    
                     var (l,r) = (0, hist.Count);
                     while (l < r)
                     {
@@ -51,6 +51,8 @@ public class Solution
                         var s = current - hist[l];
                         if (closest < s) closest = s;
                     }
+                    
+                    
                     var (insL, insR) = (0,hist.Count);
                     while (insL < insR)
                     {

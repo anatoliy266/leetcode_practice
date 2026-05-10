@@ -16,8 +16,8 @@ public class Solution
 
         while (n > 1 && available > 0)
         {
-            currentStepChoices *= available; // Считаем только новые числа (9*9, потом 81*8...)
-            res += currentStepChoices;       // Плюсуем их к общему итогу
+            currentStepChoices *= available;
+            res += currentStepChoices;
             available--;
             n--;
         }
