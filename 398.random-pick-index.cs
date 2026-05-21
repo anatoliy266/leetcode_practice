@@ -10,6 +10,7 @@ public class Solution {
     Dictionary<int, List<int>> idxs = new Dictionary<int, List<int>>();
     public Solution(int[] nums) {
         // _nums = nums;
+        
         for (var i = 0; i < nums.Length; i++)
         {
             if (idxs.ContainsKey(nums[i])) idxs[nums[i]].Add(i);
@@ -29,6 +30,7 @@ public class Solution {
         //     }
         // }
         // return idx;
+
         var list = idxs[target];
         var i = Random.Shared.Next(list.Count);
         return list[i];
