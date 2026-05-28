@@ -14,6 +14,7 @@ public class Solution {
             if (nums[i] > l) l = nums[i];
             r += nums[i];
         }
+        
         while (l < r)
         {
             var mid = l + (r-l) / 2;
