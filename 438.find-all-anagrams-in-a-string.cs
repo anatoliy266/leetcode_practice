@@ -7,54 +7,116 @@
 // @lc code=start
 public class Solution
 {
+    // public IList<int> FindAnagrams(string s, string p)
+    // {
+    //     var res = new List<int>();
+    //     if (s.Length < p.Length) return res;
+
+    //     var quantS = new int[26];
+    //     var quantP = new int[26];
+
+    //     for (var i = 0; i < p.Length; i++)
+    //     {
+    //         quantP[p[i] - 'a']++;
+    //         quantS[s[i] - 'a']++;
+    //     }
+
+    //     // if (quantS.SequenceEqual(quantP))
+    //     if (ArraysEqual(quantS, quantP))
+    //     {
+    //         res.Add(0);
+    //     }
+
+    //     var (l, r) = (0, p.Length);
+
+
+    //     while (r < s.Length)
+    //     {
+    //         quantS[s[r] - 'a']++;
+    //         quantS[s[l] - 'a']--;
+
+    //         // if (quantS.SequenceEqual(quantP))
+    //         if (ArraysEqual(quantS, quantP))
+    //         {
+    //             res.Add(l + 1);
+    //         }
+
+    //         l++;
+    //         r++;
+    //     }
+
+    //     return res;
+    // }
+
+    // private bool ArraysEqual(int[] a, int[] b)
+    // {
+    //     for (var i = 0; i < 26; i++)
+    //     {
+    //         if (a[i] != b[i]) return false;
+    //     }
+    //     return true;
+    // }
+
     public IList<int> FindAnagrams(string s, string p)
     {
         var res = new List<int>();
         if (s.Length < p.Length) return res;
 
-        var quantS = new int[26];
-        var quantP = new int[26];
-
-        for (var i = 0; i < p.Length; i++)
+        // Используем один массив для разницы частот символов
+        // Положительное число — нужно символов из p
+        // Отрицательное число — избыток символов в текущем окне s
+        var counts = new int[26];
+        foreach (var ch in p)
         {
-            quantP[p[i] - 'a']++;
-            quantS[s[i] - 'a']++;
+            counts[ch - 'a']++;
         }
 
-        // if (quantS.SequenceEqual(quantP))
-        if (ArraysEqual(quantS, quantP))
+        // Считаем, сколько уникальных символов из p нам нужно найти
+        var requiredMatches = 0;
+        for (int i = 0; i < 26; i++)
         {
-            res.Add(0);
+            if (counts[i] > 0) requiredMatches++;
         }
 
-        var (l, r) = (0, p.Length);
+        var l = 0;
+        var currentMatches = 0;
 
-
-        while (r < s.Length)
+        for (var r = 0; r < s.Length; r++)
         {
-            quantS[s[r] - 'a']++;
-            quantS[s[l] - 'a']--;
+            // 1. Обрабатываем правый (входящий) символ
+            var rChar = s[r] - 'a';
+            counts[rChar]--; // Забираем символ из "нужных"
 
-            // if (quantS.SequenceEqual(quantP))
-            if (ArraysEqual(quantS, quantP))
+            // Если количество этого символа стало ровно 0, значит частота совпала с p
+            if (counts[rChar] == 0)
             {
-                res.Add(l + 1);
+                currentMatches++;
             }
 
-            l++;
-            r++;
+            // 2. Если окно превысило размер p, сжимаем его слева
+            if (r - l + 1 > p.Length)
+            {
+                var lChar = s[l] - 'a';
+
+                // Если до возврата символа частота была идеальной (0), 
+                // то возвращая символ, мы ломаем совпадение
+                if (counts[lChar] == 0)
+                {
+                    currentMatches--;
+                }
+
+                counts[lChar]++; // Возвращаем символ обратно в "нужные"
+                l++;
+            }
+
+            // 3. Если количество совпавших уникальных символов равно требуемому
+            if (currentMatches == requiredMatches)
+            {
+                res.Add(l);
+            }
         }
 
         return res;
-    }
-
-    private bool ArraysEqual(int[] a, int[] b)
-    {
-        for (var i = 0; i < 26; i++)
-        {
-            if (a[i] != b[i]) return false;
-        }
-        return true;
     }
 }
 // @lc code=end
